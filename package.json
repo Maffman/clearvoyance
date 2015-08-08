@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Maffman/clearvoyance#readme",
   "dependencies": {
     "angular": "^1.4.3",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "requirejs": "^2.1.20"
   }
 }
