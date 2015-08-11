@@ -1,13 +1,10 @@
-define(function (require, exports, module) {
+define(function appBuilder(require, exports, module) {
   "use strict";
 
   var angular = require('angular');
-
-  var app = angular.module('clearvoyance', []);
-
-  app.controller('HelloWorldController', ['$scope', function($scope) {
-    $scope.message = "Hello World!";
-  }]);
+  var app = angular.module('clearvoyance', [
+    require('./components/hello-world/hello-world.controller')
+  ]);
 
   module.exports = app.name;
 });

@@ -1,4 +1,4 @@
-(function(global, require) {
+(function configBuilder(require, document) {
   "use strict";
 
   require.config({
@@ -14,8 +14,8 @@
       }
     },
     deps: ['angular', 'app'],
-    callback: function (angular, app) {
-      angular.bootstrap(global.document, [app]);
+    callback: function bootstrapApp(angular, app) {
+      angular.bootstrap(document, [app]);
     }
   });
-}(this, require));
+}(require, document));

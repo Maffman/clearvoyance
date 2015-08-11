@@ -1,3 +1,4 @@
+"use strict";
 var express = require('express');
 var util = require('util');
 
@@ -11,6 +12,6 @@ app.use('/angular', express.static(path.join(__dirname, 'node_modules/angular'))
 
 app.use('/', express.static(path.join(__dirname, 'client')));
 
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), function () {
   console.log(util.format('Server started: http://localhost:%s/', app.get('port')));
 });
