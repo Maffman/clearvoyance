@@ -4,16 +4,16 @@
   require.config({
     packages: [
       {
-        name: 'angular',
-        main: 'angular'
+        name: "angular",
+        main: "angular"
       }
     ],
     shim: {
-      'angular/angular': {
-        exports: 'angular'
+      "angular/angular": {
+        exports: "angular"
       }
     },
-    deps: ['angular', 'app'],
+    deps: ["angular", "app"],
     callback: function bootstrapApp(angular, app) {
       angular.bootstrap(document, [app]);
     }
