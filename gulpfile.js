@@ -4,27 +4,14 @@ var gulp = require("gulp"),
 
 gulp.task("lint-client", function lintClient() {
   return gulp.src(["client/**/*.js"])
-    .pipe(eslint({
-      globals: [
-        "define",
-        "require"
-      ],
-      envs: [
-        "browser",
-        "es6"
-      ]
-    }))
+    .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
 
 gulp.task("lint-server", function lintServer() {
-  return gulp.src(["**/*.js", "!client/**", "!node_modules/**"])
-    .pipe(eslint({
-      envs: [
-        "node"
-      ]
-    }))
+  return gulp.src(["server/**/*.js"])
+    .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });

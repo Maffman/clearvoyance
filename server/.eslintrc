@@ -1,0 +1,28 @@
+{
+  "rules": {
+    // possible errors
+    "no-console": 0, // disallow use of console in the node environment (recommended)
+    // best practices
+    "no-process-env": 2, // TODO: disable in config module
+    // strict mode
+    "strict": [2, "global"], // controls location of Use Strict Directives
+    // variables
+    // node
+    "callback-return": [2, ["callback", "resolve", "reject"]], // enforce return after a callback
+    "handle-callback-err": [2, "^(error|.+Error)$"], // enforce error handling in callbacks
+    "no-mixed-requires": [2, true], // disallow mixing regular variable and require declarations
+    "no-new-require": 2, // disallow use of new operator with the require function
+    "no-path-concat": 2, // disallow string concatenation with __dirname and __filename
+    "no-process-exit": 1, // disallow process.exit()
+    "no-restricted-modules": 0, // restrict usage of specified node modules
+    "no-sync": 1, // disallow use of synchronous methods
+    // stylistic
+    // es6
+    "no-var": 0, // require let or const instead of var
+    "object-shorthand": 0 // require method and property shorthand syntax for object literals
+    // legacy
+  },
+  "env": {
+    "node": true
+  }
+}

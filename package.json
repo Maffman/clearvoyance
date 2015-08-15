@@ -2,13 +2,15 @@
   "name": "clearvoyance",
   "version": "0.0.1",
   "description": "",
-  "main": "server.js",
+  "main": "server/app.js",
   "files": [
     "client",
+    "server",
     "gulpfile.js",
-    "server.js"
+    ".eslintrc"
   ],
   "scripts": {
+    "start": "node server/app.js",
     "test": "gulp lint"
   },
   "repository": {
