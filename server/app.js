@@ -8,7 +8,9 @@ var app = express();
 
 app.set("port", environment.port);
 
-app.use("/angular", express.static(path.join(environment.moduleDirectory, "angular")));
+app.use("/angular.js", function serveAngular(request, response) {
+  response.sendFile(path.join(environment.moduleDirectory, "angular/angular.js"));
+});
 
 app.use("/", express.static(environment.clientDirectory));
 
