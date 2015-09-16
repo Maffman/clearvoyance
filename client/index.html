@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="cv/app">
   <head>
-    <script src="requirejs/require.js" data-main="config"></script>
+    <script src="angular/angular.js"></script>
+    <script src="app.js"></script>
   </head>
-  <body ng-controller="HelloWorldController">
+  <body ng-controller="HelloWorldController as helloWorldController">
     <main>
-      <p ng-bind="message"></p>
+      <p ng-bind="helloWorldController.message"></p>
     </main>
   </body>
 </html>

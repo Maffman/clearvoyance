@@ -6,12 +6,15 @@
   "files": [
     "client",
     "server",
-    "gulpfile.js",
     ".eslintrc"
   ],
   "scripts": {
     "start": "node server/app.js",
-    "test": "gulp lint"
+    "lint": "eslint \"client/**/*.js server/**/*.js\"",
+    "build:js": "cat $(find client/ -name \\*.js) > dist/app.js",
+    "prebuild:html": "rm $(find dist -name \\*.html) -f",
+    "build:html": "cd client && cp --parents $(find . -name \\*.html) ../dist/ && cd ../",
+    "build": "npm run build:js & npm run build:html"
   },
   "repository": {
     "type": "git",
@@ -25,11 +28,9 @@
   "homepage": "https://github.com/Maffman/clearvoyance#readme",
   "dependencies": {
     "angular": "^1.4.3",
-    "express": "^4.13.3",
-    "requirejs": "^2.1.20"
+    "express": "^4.13.3"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-jslint": "^0.2.2"
+    "eslint": "^1.4.3"
   }
 }

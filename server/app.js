@@ -8,7 +8,6 @@ var app = express();
 
 app.set("port", environment.port);
 
-app.use("/requirejs", express.static(path.join(environment.moduleDirectory, "requirejs")));
 app.use("/angular", express.static(path.join(environment.moduleDirectory, "angular")));
 
 app.use("/", express.static(environment.clientDirectory));
