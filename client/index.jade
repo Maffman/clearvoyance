@@ -1,0 +1,14 @@
+doctype html
+html(ng-app="cv/app")
+  head
+    each script in scripts
+      script(src=script)
+    case style
+      when "less"
+        link(rel="stylesheet/less", type="text/css", href="styles.less")
+        script(src="less.js")
+      when "css"
+        link(rel="stylesheet", type="text/css", href="styles.css")
+  body(ng-controller="HelloWorldController as helloWorldController")
+    main
+      p(ng-bind="helloWorldController.message")

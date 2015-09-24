@@ -2,19 +2,27 @@
   "name": "clearvoyance",
   "version": "0.0.1",
   "description": "",
-  "main": "server/app.js",
+  "main": "server/main.js",
   "files": [
     "client",
     "server",
     ".eslintrc"
   ],
   "scripts": {
-    "start": "node server/app.js",
+    "start": "node server/main.js",
     "lint": "eslint \"client/**/*.js server/**/*.js\"",
-    "build:js": "cat $(find client/ -name \\*.js) > dist/app.js",
-    "prebuild:html": "rm $(find dist -name \\*.html) -f",
-    "build:html": "cd client && cp --parents $(find . -name \\*.html) ../dist/ && cd ../",
-    "build": "npm run build:js & npm run build:html"
+    "prebuild:js": "bash bin/make-dist.sh",
+    "build:js": "bash bin/uglify-js.sh",
+    "prebuild:html": "bash bin/clear-html.sh",
+    "build:html": "bash bin/minify-html.sh & bash bin/build-index.sh",
+    "prebuild:html:all": "bash bin/clear-html.sh",
+    "build:html:all": "bash bin/minify-html.sh",
+    "prebuild:html:index": "bash bin/make-dist.sh",
+    "build:html:index": "bash bin/build-index.sh",
+    "prebuild:css": "bash bin/make-dist.sh",
+    "build:css": "bash bin/compile-less.sh",
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "bash bin/uglify-js.sh & bash bin/minify-html.sh & bash bin/build-index.sh & bash bin/compile-less.sh"
   },
   "repository": {
     "type": "git",
@@ -27,10 +35,16 @@
   },
   "homepage": "https://github.com/Maffman/clearvoyance#readme",
   "dependencies": {
-    "angular": "^1.4.3",
     "express": "^4.13.3"
   },
   "devDependencies": {
-    "eslint": "^1.4.3"
+    "angular": "^1.4.3",
+    "clean-css": "^3.4.4",
+    "eslint": "^1.4.3",
+    "glob": "^5.0.14",
+    "html-minifier": "^0.8.0",
+    "jade": "^1.11.0",
+    "less": "^2.5.1",
+    "uglify-js": "^2.4.24"
   }
 }
