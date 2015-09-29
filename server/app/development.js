@@ -15,6 +15,9 @@ dev.set("views", environment.sourceDirectory);
 dev.get("/angular.js", function(request, response) {
   response.sendFile(path.join(environment.moduleDirectory, "angular/angular.js"));
 });
+dev.get("/angular-route.js", function(request, response) {
+  response.sendFile(path.join(environment.moduleDirectory, "angular-route/angular-route.js"));
+});
 dev.get("/less.js", function(request, response) {
   response.sendFile(path.join(environment.moduleDirectory, "less/dist/less.js"));
 });

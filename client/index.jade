@@ -4,16 +4,18 @@ html(ng-app="cv/app")
     case environment
       when "development"
         script(src="angular.js")
+        script(src="angular-route.js")
         each script in scripts
           script(src=script)
         link(rel="stylesheet/less", type="text/css", href="styles.less")
         script(src="less.js")
       when "production"
-        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js")
         script(src="app.js")
         link(rel="stylesheet", type="text/css", href="styles.css")
         each template in templates
           script(id= template.path, type="text/ng-template")!= template.content
-  body(ng-controller="HelloWorldController as helloWorldController")
-    main
-      p(ng-bind="helloWorldController.message")
+    base(href="/")
+  body
+    main(ng-view)

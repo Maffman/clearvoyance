@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "start": "node server/main.js",
-    "lint": "eslint 'client/**.js server/**.js'",
+    "lint": "eslint 'server/**/*.js client/**/*.js'",
     "prebuild": "rimraf 'dist/*'",
-    "build": "node bin/build-js & node bin/build-html & node bin/build-css",
+    "build": "node bin/build-js && node bin/build-html && node bin/build-css",
     "build:js": "node bin/build-js",
     "build:html": "node bin/build-html",
     "build:css": "node bin/build-css"
@@ -31,13 +31,14 @@
     "express": "^4.13.3"
   },
   "devDependencies": {
-    "angular": "^1.4.3",
+    "angular": "1.4.6",
+    "angular-route": "1.4.6",
     "eslint": "^1.4.3",
     "glob": "^5.0.14",
     "html-minifier": "^0.8.0",
     "jade": "^1.11.0",
     "less": "^2.5.1",
-    "mkdirp": "^0.5.1",
+    "ng-annotate": "^1.0.2",
     "promise": "^7.0.4",
     "rimraf": "^2.4.3",
     "uglify-js": "^2.4.24"
