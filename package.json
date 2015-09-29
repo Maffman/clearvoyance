@@ -10,19 +10,12 @@
   ],
   "scripts": {
     "start": "node server/main.js",
-    "lint": "eslint \"client/**/*.js server/**/*.js\"",
-    "prebuild:js": "bash bin/make-dist.sh",
-    "build:js": "bash bin/uglify-js.sh",
-    "prebuild:html": "bash bin/clear-html.sh",
-    "build:html": "bash bin/minify-html.sh & bash bin/build-index.sh",
-    "prebuild:html:all": "bash bin/clear-html.sh",
-    "build:html:all": "bash bin/minify-html.sh",
-    "prebuild:html:index": "bash bin/make-dist.sh",
-    "build:html:index": "bash bin/build-index.sh",
-    "prebuild:css": "bash bin/make-dist.sh",
-    "build:css": "bash bin/compile-less.sh",
-    "prebuild": "rm -rf dist && mkdir dist",
-    "build": "bash bin/uglify-js.sh & bash bin/minify-html.sh & bash bin/build-index.sh & bash bin/compile-less.sh"
+    "lint": "eslint 'client/**.js server/**.js'",
+    "prebuild": "rimraf 'dist/*'",
+    "build": "node bin/build-js & node bin/build-html & node bin/build-css",
+    "build:js": "node bin/build-js",
+    "build:html": "node bin/build-html",
+    "build:css": "node bin/build-css"
   },
   "repository": {
     "type": "git",
@@ -39,12 +32,14 @@
   },
   "devDependencies": {
     "angular": "^1.4.3",
-    "clean-css": "^3.4.4",
     "eslint": "^1.4.3",
     "glob": "^5.0.14",
     "html-minifier": "^0.8.0",
     "jade": "^1.11.0",
     "less": "^2.5.1",
+    "mkdirp": "^0.5.1",
+    "promise": "^7.0.4",
+    "rimraf": "^2.4.3",
     "uglify-js": "^2.4.24"
   }
 }

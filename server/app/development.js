@@ -9,22 +9,23 @@ var dev = express();
 
 dev.set("view engine", "jade");
 dev.locals.pretty = true;
+dev.locals.environment = "development";
 dev.set("views", environment.sourceDirectory);
 
-dev.get("/angular.js", function serveAngular(request, response) {
+dev.get("/angular.js", function(request, response) {
   response.sendFile(path.join(environment.moduleDirectory, "angular/angular.js"));
 });
-dev.get("/less.js", function serveAngular(request, response) {
+dev.get("/less.js", function(request, response) {
   response.sendFile(path.join(environment.moduleDirectory, "less/dist/less.js"));
 });
 
 dev.get(["/", "/index.html"], function(request, response) {
-  glob("**/*.js", { cwd: environment.sourceDirectory }, function(error, fileNames) {
-    var scripts = ["angular.js"];
-    fileNames.forEach(function(fileName) {
-      scripts.push(fileName);
-    });
-    response.render("index", { scripts: scripts, style: "less" });
+  glob("**/*.js", { cwd: "client" }, function(error, javascriptFiles) {
+    if (error) {
+      response.send(500, error);
+    } else {
+      response.render("index", { scripts: javascriptFiles });
+    }
   });
 });
 
